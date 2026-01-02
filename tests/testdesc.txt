@@ -1,0 +1,14 @@
+import test and expect from playwright/test
+test is define test cases;
+expect is used to assert;
+launch the website using page.goto("url")
+find the pagination buttons if it has next and pre
+find the next button element to click on it
+find allcards locator in the page;
+open the while loop because we have no idea how many pages are there
+use let found = false;
+get all titles in the page using .allInnerText()method;
+iterate through allInnerText in the page if you find in the page found = true  break the loop
+else look for the next button is not visible or not disabled break;
+click nextbutton
+

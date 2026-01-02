@@ -1,5 +1,6 @@
 
 import { expect, test, Locator, Page } from "@playwright/test";
+import { Helper } from "../utility/helper";
 
 export class LoginPage {
     readonly page: Page;
@@ -20,7 +21,9 @@ export class LoginPage {
 
     async goto(url:string) {
         await this.page.goto(url)
-        await this.page.waitForSelector(this.emailselector);
+        // await this.page.waitForSelector(this.emailselector);
+        await Helper.waitforSelector(this.page,this.emailselector)
+
     }
 
     async performLogin(email:string,password:string) {

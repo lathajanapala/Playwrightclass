@@ -1,0 +1,26 @@
+[
+    {
+      "scenario": "Invalid Password",
+      "body": {
+      "email": "pushpa1766672873402@example.com",
+      "password": "WrongPassword123!"
+    },
+      "expectedStatus": 401,
+      "expectedMsg": "Invalid Credentials"
+    },
+    {
+      "scenario": "Invalid Email",
+      "body": {
+      "email": "wrong_email@example.com",
+      "password": "Password123!"
+    },
+      "expectedStatus": 401,
+      "expectedMsg": "Invalid Credentials"
+    },
+    {
+      "scenario": "Empty Fields",
+      "body": {},
+      "expectedStatus": 400,
+      "expectedMsg": "Please provide an email address and password"
+    }
+  ]
