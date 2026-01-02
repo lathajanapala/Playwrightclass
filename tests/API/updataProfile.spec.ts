@@ -1,37 +1,22 @@
 import { test, expect } from '@playwright/test';
-import { readUser, saveUser } from '../../utils/userStore';
+import auth from './auth.json';
 
-test("User can update name, email, password", async ({ request }) => {
-
-  const user = readUser();
- const newPassword = "pushpa859840"
-
-  // 🔹 Update profile
+test('User can update profile', async ({ request }) => {
   const response = await request.patch(
-    "https://goal-tracker-api.onrender.com/api/v1/auth/updateprofile",
+    'https://goal-tracker-api.onrender.com/api/v1/auth/updateprofile',
     {
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${user.token}`
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${auth.token}`
       },
       data: {
-        name: user.name,          // ✅
-        email: user.email,        // ✅
-        oldPassword: user.password, // ✅ critical
-        newPassword: newPassword
+        name: auth.name,
+        email: auth.email,
+        oldPassword: auth.password,
+        newPassword: 'NewPassword123!'
       }
     }
   );
-console.log(user.token)
+
   expect(response.status()).toBe(200);
-  user.password = newPassword;
-  console.log("🚀 ~ response:", await response.json())
-
-
-  // 🔹 Login again because password changed
-
-
-
-  // 🔹 Save new token + password
-
 });
